@@ -1,0 +1,303 @@
+.header {
+  padding: 0 40px;
+  border-top: 5px solid #1976f5;
+}
+.header .logo {
+  float: left;
+  padding: 42px 0 22px 40px;
+}
+.gnb {
+  float: right;
+  padding: 50px 40px 0 0;
+}
+.gnb > ul > li {
+  float: left;
+  padding: 0 45px;
+}
+.gnb > ul > li > a {
+  display: block;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.gnb > ul > li:hover > a {
+  color: #1976f5;
+}
+.gnb > ul > li:last-child {
+  padding-right: 0;
+}
+
+/*----------- 웹 -----------*/
+@media (min-width: 1400px) {
+  /*hs케어소개*/
+  .hs_care_service li {
+    width: 316px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bx-wrapper .bx-prev {
+    left: -150px;
+  }
+  .bx-wrapper .bx-next {
+    right: -150px;
+  }
+  .bx-pager {
+    display: none;
+  }
+
+  /*header*/
+  .logo .web {
+    display: block;
+  }
+  .logo .mb {
+    display: none;
+  }
+  .gnb_logo,
+  .gnb_close,
+  .gnb_open {
+    display: none;
+  }
+  .gnb > ul > li {
+    position: relative;
+    -webkit-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+  }
+  .gnb > ul > li > a {
+    padding-bottom: 15px;
+    display: block;
+  }
+  .s_gnb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    padding-top: 55px;
+    display: none;
+  }
+  .s_gnb ul {
+    padding: 30px 0 12px;
+    width: 175px;
+    background-color: #1954a5;
+    border-radius: 20px;
+  }
+  .s_gnb li {
+    margin-bottom: 18px;
+  }
+  .s_gnb li a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    text-align: center;
+    -webkit-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+  }
+  .s_gnb li a:hover {
+    color: #28bdfb;
+  }
+}
+
+/*----------- 태블릿 -----------*/
+@media all and (min-width: 768px) and (max-width: 1200px) {
+  /*header*/
+  .header {
+    position: relative;
+    padding: 0 20px;
+  }
+  .header .logo {
+    padding: 30px 0;
+  }
+  .gnb {
+    padding-right: 0;
+    float: none;
+    padding: 0 14%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .logo .web {
+    display: block;
+  }
+  .logo .mb {
+    display: none;
+  }
+  .gnb_logo,
+  .gnb_close,
+  .gnb_open {
+    display: block;
+  }
+  .gnb_open {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .gnb_wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    border-top: 5px solid #1976f5;
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: none;
+  }
+  .gnb_logo {
+    padding: 30px 0 60px;
+  }
+  .gnb_logo img {
+    width: 184px;
+  }
+  .gnb_close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .gnb_close img {
+    width: 50px;
+  }
+  .gnb > ul > li {
+    float: none;
+    padding: 0 0 20px 0;
+    width: 100%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .gnb > ul > li > a {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .gnb > ul > li:hover > a {
+    color: #1976f5;
+  }
+  .s_gnb {
+    padding: 30px 0 10px;
+    background-color: #1954a5;
+    border-radius: 20px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: none;
+  }
+  .s_gnb li {
+    margin-bottom: 20px;
+  }
+  .s_gnb li a {
+    color: #fff;
+    font-size: 15px;
+  }
+  .s_gnb li:hover a {
+    color: #1d75be;
+  }
+
+
+/*----------- 모바일 -----------*/
+@media all and (max-width: 767px) {
+  /*header*/
+  .header {
+    padding: 0 20px;
+  }
+  .header .logo {
+    padding: 20px 0;
+  }
+  .header .logo img {
+    width: 120px;
+  }
+
+  .gnb {
+    padding-right: 0;
+    float: none;
+    padding: 0 14%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .logo .web {
+    display: none;
+  }
+  .logo .mb {
+    display: block;
+  }
+  .gnb_logo,
+  .gnb_close,
+  .gnb_open {
+    display: block;
+  }
+  .gnb_open {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
+  .gnb_open img {
+    width: 30px;
+  }
+  .gnb_wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    border-top: 5px solid #1976f5;
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: none;
+  }
+  .gnb_logo {
+    padding: 20px 0 60px;
+  }
+  .gnb_logo img {
+    width: 120px;
+  }
+  .gnb_close {
+    position: absolute;
+    right: 20px;
+    top: 14px;
+  }
+  .gnb_close img {
+    width: 30px;
+  }
+  .gnb > ul > li {
+    float: none;
+    padding: 0 0 20px 0;
+    width: 100%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .gnb > ul > li > a {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .gnb > ul > li:hover > a {
+    color: #1976f5;
+  }
+  .s_gnb {
+    padding: 30px 0 10px;
+    background-color: #1954a5;
+    border-radius: 20px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: none;
+  }
+  .s_gnb li {
+    margin-bottom: 20px;
+  }
+  .s_gnb li a {
+    color: #fff;
+    font-size: 15px;
+  }
+  .s_gnb li:hover a {
+    color: #1d75be;
+  }
+
+}
+}
