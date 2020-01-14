@@ -1,7 +1,8 @@
 import React from "react";
+import Borders from "../components/revervation/Borders";
 
 const ReservationGuide = () => {
-  return <div>예약 안내 입니다.</div>;
+  return <Borders />;
 };
 
 export default ReservationGuide;
