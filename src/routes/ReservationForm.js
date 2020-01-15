@@ -1,7 +1,7 @@
 import React from "react";
-import Borders from "../components/revervation/Borders";
+import Form from "../components/revervation/Form";
 
-const ReservationGuide = () => {
+const ReservationForm = () => {
   return (
     <>
       <div class="sub_visual_wrap">
@@ -14,9 +14,9 @@ const ReservationGuide = () => {
           </div>
         </div>
       </div>
-      <Borders />
+      <Form />
     </>
   );
 };
 
-export default ReservationGuide;
+export default ReservationForm;

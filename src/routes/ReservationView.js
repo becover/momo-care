@@ -1,7 +1,7 @@
 import React from "react";
-import Borders from "../components/revervation/Borders";
+import View from "../components/revervation/View";
 
-const ReservationGuide = () => {
+const ReservationView = () => {
   return (
     <>
       <div class="sub_visual_wrap">
@@ -14,9 +14,9 @@ const ReservationGuide = () => {
           </div>
         </div>
       </div>
-      <Borders />
+      <View />
     </>
   );
 };
 
-export default ReservationGuide;
+export default ReservationView;

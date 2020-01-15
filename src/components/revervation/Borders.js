@@ -1,25 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import icon_home from "../../asset/img/icon_home.png";
+import icon_page_arrow1 from "../../asset/img/page_arrow_1.gif";
+import icon_page_arrow2 from "../../asset/img/page_arrow_2.gif";
+import icon_page_arrow3 from "../../asset/img/page_arrow_3.gif";
+import icon_page_arrow4 from "../../asset/img/page_arrow_4.gif";
 
-const Borders = () => {
+const ReservationBorders = () => {
   return (
     <>
-      <div class="sub_visual_wrap">
-        <div class="sub_visual sub_visual_5">
-          <div class="sub_vs_txt">
-            <span class="title">Home Start Care</span>
-            <p>
-              고객님의 가정에 깨끗함을 제공하는 홈케어 전문업체 MOMO케어 입니다
-            </p>
-          </div>
-        </div>
-      </div>
-
       <div class="sub_container">
         <div class="navi clfx">
           <ul class="clfx">
             <li>
-              <img src="../../asset/img/icon_home.png" alt="HOME" />
+              <img src={icon_home} alt="HOME" />
             </li>
             <li>예약하기</li>
           </ul>
@@ -35,7 +29,7 @@ const Borders = () => {
                   <input type="text" placeholder="고객명 입력" />
                   <input type="button" value="검색" />
                 </div>
-                <Link to="sub5_1_write.html" class="btn-blue-bg">
+                <Link to="/reservation/form" class="btn-blue-bg">
                   예약하기
                 </Link>
               </fieldset>
@@ -174,10 +168,10 @@ const Borders = () => {
 
           <div class="paging_wrap">
             <Link to="" class="arrow">
-              <img src="../img/page_arrow_1.gif" alt="처음으로" />
+              <img src={icon_page_arrow1} alt="처음으로" />
             </Link>
             <Link to="" class="arrow">
-              <img src="../img/page_arrow_2.gif" alt="이전" />
+              <img src={icon_page_arrow2} alt="이전" />
             </Link>
             <Link to="" class="on">
               1
@@ -187,10 +181,10 @@ const Borders = () => {
             <Link to="">4</Link>
             <Link to="">5</Link>
             <Link to="" class="arrow">
-              <img src="../img/page_arrow_3.gif" alt="다음" />
+              <img src={icon_page_arrow3} alt="다음" />
             </Link>
             <Link to="" class="arrow">
-              <img src="../img/page_arrow_4.gif" alt="끝페이지" />
+              <img src={icon_page_arrow4} alt="끝페이지" />
             </Link>
           </div>
         </div>
@@ -224,4 +218,4 @@ const Borders = () => {
   );
 };
 
-export default Borders;
+export default ReservationBorders;
