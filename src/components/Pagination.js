@@ -1,63 +1,64 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
 import icon_page_arrow1 from "../asset/img/page_arrow_1.gif";
 import icon_page_arrow2 from "../asset/img/page_arrow_2.gif";
 import icon_page_arrow3 from "../asset/img/page_arrow_3.gif";
 import icon_page_arrow4 from "../asset/img/page_arrow_4.gif";
 
-// const SET_PAGE = "SET_PAGE";
-// const mapDispatchToProps = dispatch => ({
-//   onSetPage: (page, payload) => dispatch({ type: SET_PAGE, page, payload })
-// });
-
-const Pagination = ({ state: props }) => {
-  console.log("props:", props);
+const Pagination = ({ articlesCount, currentPage, setCurrentPage }) => {
   const range = [];
-  if (props.length <= 10) {
+  if (articlesCount <= 10) {
     return range.push(0);
   }
-  for (let i = 0; i < Math.ceil(props.length / 10); ++i) {
+  for (let i = 0; i < Math.ceil(articlesCount / 10); ++i) {
     range.push(i);
   }
+  const first = range[0];
+  const last = range[range.length - 1];
+  const min = Math.max(0, currentPage - 2);
+  const max = Math.min(min + 4, last);
 
-  // const setPage = page => {
-  //   if (props.pager) {
-  //     props.onSetPage(page, props.pager(page));
-  //   } else {
-  //     props.onSetPage(page, agent.Articles.all(page));
-  //   }
-  // };
   return (
     <div class="paging_wrap">
-      <Link to="" class="arrow">
+      <span class="arrow" onClick={() => setCurrentPage(first)}>
         <img src={icon_page_arrow1} alt="처음으로" />
-      </Link>
-      <Link to="" class="arrow">
+      </span>
+      <span
+        class="arrow"
+        onClick={() =>
+          currentPage === 0
+            ? setCurrentPage(first)
+            : setCurrentPage(currentPage - 1)
+        }
+      >
         <img src={icon_page_arrow2} alt="이전" />
-      </Link>
-      {range.map(v => {
-        const isCurrent = v === props.cerrentPage;
-        const onClick = ev => {
-          ev.preventDefault();
-        };
-        return (
-          <a
-            className={isCurrent && "on"}
-            onClick={onClick}
-            key={v.toString()}
-            href=""
-          >
-            {v + 1}
-          </a>
-        );
+      </span>
+      {range.map(value => {
+        const isCurrent = value === currentPage;
+        if (value >= min && value <= max) {
+          return (
+            <span
+              key={value + 1}
+              className={isCurrent && "on"}
+              onClick={() => setCurrentPage(value)}
+            >
+              {value + 1}
+            </span>
+          );
+        }
       })}
-      <Link to="" class="arrow">
+      <span
+        class="arrow"
+        onClick={() =>
+          currentPage === 49
+            ? setCurrentPage(last)
+            : setCurrentPage(currentPage + 1)
+        }
+      >
         <img src={icon_page_arrow3} alt="다음" />
-      </Link>
-      <Link to="" class="arrow">
+      </span>
+      <span class="arrow" onClick={() => setCurrentPage(last)}>
         <img src={icon_page_arrow4} alt="끝페이지" />
-      </Link>
+      </span>
     </div>
   );
 };

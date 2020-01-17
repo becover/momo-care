@@ -2,7 +2,12 @@ import React from "react";
 import Borders from "../components/revervation/Borders";
 import Pagination from "../components/Pagination";
 
-const ReservationGuide = ({ state }) => {
+const ReservationGuide = ({
+  articles,
+  articlesCount,
+  currentPage,
+  setCurrentPage
+}) => {
   return (
     <>
       <div class="sub_visual_wrap">
@@ -16,8 +21,16 @@ const ReservationGuide = ({ state }) => {
         </div>
       </div>
       <div class="sub_container">
-        <Borders state={state} />
-        <Pagination state={state} />
+        <Borders
+          articles={articles}
+          articlesCount={articlesCount}
+          currentPage={currentPage}
+        />
+        <Pagination
+          articlesCount={articlesCount}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

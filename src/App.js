@@ -14,19 +14,23 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
-  const [date, setDate] = useState([]);
+  const [data, setData] = useState([]);
+  const [articlesCount, setArticlesCount] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
-    const getDate = async () => {
+    const getData = async pageNumber => {
       const {
-        data: { articles }
-      } = await await axios.get(
-        "https://conduit.productionready.io/api/articles"
+        data: { articles, articlesCount: Count }
+      } = await axios.get(
+        `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber}`
       );
-      setDate(articles);
+      setData(articles);
+      setArticlesCount(Count);
+      setCurrentPage(pageNumber);
     };
-    getDate();
-  }, []);
-  console.log("date:", date);
+    getData(currentPage);
+  }, [currentPage]);
+
   return (
     <>
       <Header />
@@ -37,7 +41,14 @@ function App() {
       <Route
         path="/reservation"
         exact
-        render={() => <ReservationGuide state={date} />}
+        render={() => (
+          <ReservationGuide
+            articles={data}
+            articlesCount={articlesCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
       />
       <Route path="/reservation/view/:id" exact component={View} />
       <Route path="/reservation/form" exact component={ReservationForm} />

@@ -417,9 +417,9 @@ transition: all 0.35s ease-in-out;
 
 /*paging*/
 .paging_wrap{text-align:center; }
-.paging_wrap a{margin:0 1px;width:30px; height:30px; line-height:28px; text-align:center; display:inline-block; font-size:14px; color:#666;}
-.paging_wrap a.arrow{border:1px solid #ddd; border-radius:50%;}
-.paging_wrap a.on{background-color:#28bdfb; color:#fff; font-weight:bold; border-radius:50%;}
+.paging_wrap span{margin:0 1px;width:30px; height:30px; line-height:28px; text-align:center; display:inline-block; font-size:14px; color:#666; cursor: pointer;}
+.paging_wrap span.arrow{border:1px solid #ddd; border-radius:50%;}
+.paging_wrap span.on{background-color:#28bdfb; color:#fff; font-weight:bold; border-radius:50%;}
 
 /*서비스사례*/
 .gallery_list{margin-bottom:40px; border-top:2px solid #1976f5;}

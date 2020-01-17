@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import icon_home from "../../asset/img/icon_home.png";
 
-const ReservationBorders = ({ state: borders }) => {
+const ReservationBorders = ({ articles, articlesCount, currentPage }) => {
+  const borderNumber = [];
+  for (let i = articlesCount - 10 * currentPage, j = 0; j < 10; i--, j++) {
+    borderNumber.push(i);
+  }
   return (
     <>
       <div class="navi clfx">
@@ -47,13 +51,13 @@ const ReservationBorders = ({ state: borders }) => {
               </tr>
             </thead>
             <tbody>
-              {borders.map((border, idx) => (
-                <tr key={borders.slug}>
-                  <td>{borders.length - idx}</td>
-                  <td>{border.title}</td>
-                  <td>{border.author.username}</td>
+              {articles.map(article => (
+                <tr key={articles.slug}>
+                  <td>{borderNumber.shift()}</td>
+                  <td>{article.title}</td>
+                  <td>{article.author.username}</td>
                   <td>예약대기</td>
-                  <td>{border.createdAt.slice(0, 10)}</td>
+                  <td>{article.createdAt.slice(0, 10)}</td>
                 </tr>
               ))}
             </tbody>
