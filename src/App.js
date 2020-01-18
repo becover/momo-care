@@ -17,12 +17,15 @@ function App() {
   const [data, setData] = useState([]);
   const [articlesCount, setArticlesCount] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [author, setAuthor] = useState("");
+
   useEffect(() => {
     const getData = async pageNumber => {
       const {
         data: { articles, articlesCount: Count }
       } = await axios.get(
-        `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber}`
+        `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber *
+          10}`
       );
       setData(articles);
       setArticlesCount(Count);
@@ -30,6 +33,25 @@ function App() {
     };
     getData(currentPage);
   }, [currentPage]);
+
+  useEffect(() => {
+    const onSearchAuthor = async author => {
+      const {
+        data: { articles, articlesCount }
+      } = await axios.get(
+        `https://conduit.productionready.io/api/articles?&author=${author}`
+      );
+      setData(articles);
+      setArticlesCount(articlesCount);
+      const [
+        {
+          author: { username }
+        }
+      ] = articles;
+      setAuthor(username);
+    };
+    if (author.length !== 0) onSearchAuthor(author);
+  }, [author]);
 
   return (
     <>
@@ -43,10 +65,14 @@ function App() {
         exact
         render={() => (
           <ReservationGuide
-            articles={data}
+            data={data}
             articlesCount={articlesCount}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            author={author}
+            setAuthor={setAuthor}
+            setData={setData}
+            setArticlesCount={setArticlesCount}
           />
         )}
       />
