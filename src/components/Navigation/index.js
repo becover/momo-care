@@ -4,25 +4,25 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <>
-      <div class="gnb_open">
+      <div className="gnb_open">
         <Link to="#">
           <img src="../img/mobile_gnb_open.png" alt="" />
         </Link>
       </div>
 
-      <div class="gnb_wrap">
-        <div class="gnb_logo">
+      <div className="gnb_wrap">
+        <div className="gnb_logo">
           <Link to="#">
             <img src="../img/mb_logo.png" alt="HS CARE" />
           </Link>
         </div>
-        <div class="gnb_close">
+        <div className="gnb_close">
           <Link to="#">
             <img src="../img/gnb_close.gif" alt="메뉴닫기" />
           </Link>
         </div>
-        <div class="gnb">
-          <ul class="clfx">
+        <div className="gnb">
+          <ul className="clfx">
             <li>
               <Link to="/introduce">MOMO 케어소개</Link>
             </li>

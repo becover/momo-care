@@ -5,8 +5,8 @@ import Navigation from "../Navigation";
 
 const Header = () => {
   return (
-    <div class="header clfx">
-      <div class="logo">
+    <div className="header clfx">
+      <div className="logo">
         <Link to="/">MOMO CARE</Link>
       </div>
       <Navigation />
