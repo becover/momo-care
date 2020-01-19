@@ -18,12 +18,12 @@ const Pagination = ({ articlesCount, currentPage, setCurrentPage }) => {
   const max = Math.min(min + 4, last);
 
   return (
-    <div class="paging_wrap">
-      <span class="arrow" onClick={() => setCurrentPage(first)}>
+    <div className="paging_wrap">
+      <span className="arrow" onClick={() => setCurrentPage(first)}>
         <img src={icon_page_arrow1} alt="처음으로" />
       </span>
       <span
-        class="arrow"
+        className="arrow"
         onClick={() =>
           currentPage === 0
             ? setCurrentPage(first)
@@ -32,13 +32,14 @@ const Pagination = ({ articlesCount, currentPage, setCurrentPage }) => {
       >
         <img src={icon_page_arrow2} alt="이전" />
       </span>
+      {/* eslint-disable-next-line */}
       {range.map(value => {
         const isCurrent = value === currentPage;
         if (value >= min && value <= max) {
           return (
             <span
               key={value + 1}
-              className={isCurrent && "on"}
+              className={isCurrent ? "on" : "false"}
               onClick={() => setCurrentPage(value)}
             >
               {value + 1}
@@ -47,7 +48,7 @@ const Pagination = ({ articlesCount, currentPage, setCurrentPage }) => {
         }
       })}
       <span
-        class="arrow"
+        className="arrow"
         onClick={() =>
           currentPage === 49
             ? setCurrentPage(last)
@@ -56,7 +57,7 @@ const Pagination = ({ articlesCount, currentPage, setCurrentPage }) => {
       >
         <img src={icon_page_arrow3} alt="다음" />
       </span>
-      <span class="arrow" onClick={() => setCurrentPage(last)}>
+      <span className="arrow" onClick={() => setCurrentPage(last)}>
         <img src={icon_page_arrow4} alt="끝페이지" />
       </span>
     </div>
