@@ -6,6 +6,8 @@ import main_visual_txt from "../asset/img/main_vs_txt.png";
 import main_cont1_bg from "../asset/img/main_cont1_bg.png";
 
 const Main = () => {
+  const today = new Date();
+  const currentTime = today.getHours();
   const mainVisualListStyle1 = {
     backgroundImage: `url(${main_visual_1})`,
     backgroundRepeat: "no-repeat",
@@ -23,31 +25,32 @@ const Main = () => {
       <div className="main_visual">
         <div className="main_vs_list">
           <ul className="slides">
-            <li style={mainVisualListStyle1}>
-              <div className="main_vs_txt">
-                <img
-                  src={main_visual_txt}
-                  alt="MOMO CARE 만의 노하우가 담긴 완벽 홈케어로 여러분의 가정에 깨끗함을 더하겠습니다"
-                />
-                <div className="btn_area">
-                  <Link to="/reservation/form">온라인 예약</Link>
+            {currentTime >= 18 && currentTime < 9 ? (
+              <li style={mainVisualListStyle1}>
+                <div className="main_vs_txt">
+                  <img
+                    src={main_visual_txt}
+                    alt="MOMO CARE 만의 노하우가 담긴 완벽 홈케어로 여러분의 가정에 깨끗함을 더하겠습니다"
+                  />
+                  <div className="btn_area">
+                    <Link to="/reservation/form">온라인 예약</Link>
+                  </div>
                 </div>
-              </div>
-            </li>
-            {/*}
-            <li style={mainVisualListStyle2} className="end">
-              <div className="main_vs_txt">
-                <p>
-                  지금은 모든 업무가 종료되어 상담이 어려우니
-                  <br />
-                  온라인 예약문의를 통해 상담신청 남겨주시기 바랍니다
-                </p>
-                <div className="btn_area">
-                  <Link to="/reservation/htmlForm">온라인 예약</Link>
+              </li>
+            ) : (
+              <li style={mainVisualListStyle2} className="end">
+                <div className="main_vs_txt">
+                  <p>
+                    지금은 모든 업무가 종료되어 상담이 어려우니
+                    <br />
+                    온라인 예약문의를 통해 상담신청 남겨주시기 바랍니다
+                  </p>
+                  <div className="btn_area">
+                    <Link to="/reservation/htmlForm">온라인 예약</Link>
+                  </div>
                 </div>
-              </div>
-            </li>
-            */}
+              </li>
+            )}
           </ul>
         </div>
       </div>
