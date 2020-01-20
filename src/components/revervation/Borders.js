@@ -8,9 +8,7 @@ const ReservationBorders = ({
   articlesCount,
   currentPage,
   setAuthor,
-  location,
-  match,
-  history
+  match
 }) => {
   const borderNumber = [];
   if (articlesCount <= 10) {
@@ -36,12 +34,7 @@ const ReservationBorders = ({
       <div className="sub_cont">
         <h1 className="title_style_2">예약하기</h1>
 
-        <SearchAuthor
-          setAuthor={setAuthor}
-          location={location}
-          match={match}
-          history={history}
-        />
+        <SearchAuthor setAuthor={setAuthor} match={match} />
 
         <div className="bbs_list">
           <table>

@@ -30,9 +30,7 @@ const ReservationGuide = ({
           articlesCount={articlesCount}
           currentPage={currentPage}
           setAuthor={setAuthor}
-          location={location}
           match={match}
-          history={history}
         />
         <Pagination
           articlesCount={articlesCount}

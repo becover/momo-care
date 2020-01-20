@@ -15,24 +15,10 @@ import Footer from "./components/Footer";
 
 function App() {
   const [state, setState] = useState([]);
+  const [searchState, setSearchState] = useState([]);
   const [articlesCount, setArticlesCount] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [author, setAuthor] = useState("");
-
-  // useEffect(() => {
-  //   const getData = async pageNumber => {
-  //     const {
-  //       data: { articles, articlesCount: Count }
-  //     } = await axios.get(
-  //       `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber *
-  //         10}`
-  //     );
-  //     setData(articles);
-  //     setArticlesCount(Count);
-  //     setCurrentPage(pageNumber);
-  //   };
-  //   getData(currentPage);
-  // }, [currentPage]);
 
   useEffect(() => {
     const onSearchAuthor = async (author, pageNumber) => {
@@ -42,7 +28,8 @@ function App() {
         `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber *
           10}${author ? `&author=${author}` : ""}`
       );
-      setState(articles);
+      if (!author) setState(articles);
+      if (author) setSearchState(articles);
       setArticlesCount(articlesCount);
       const [
         {
@@ -76,17 +63,15 @@ function App() {
               setState={setState}
               setArticlesCount={setArticlesCount}
               match={match}
-              location={location}
-              history={history}
             />
           )}
         />
         <Route
-          path="/reservation/author/:author"
+          path="/reservation/searchUser/:author"
           exact
           render={({ match, location, history }) => (
             <ReservationGuide
-              state={state}
+              state={searchState}
               setState={location.state}
               articlesCount={articlesCount}
               currentPage={currentPage}
@@ -94,9 +79,7 @@ function App() {
               setAuthor={setAuthor}
               author={author}
               setArticlesCount={setArticlesCount}
-              location={location}
               match={match}
-              history={history}
             />
           )}
         />

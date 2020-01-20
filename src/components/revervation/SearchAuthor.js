@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
-const SearchAuthor = ({ setAuthor, location, match, history }) => {
-  console.log(match, history, location);
+const SearchAuthor = ({ setAuthor, match }) => {
   const [value, setValue] = useState("");
   const onChange = useCallback(e => {
     setValue(e.target.value);
@@ -14,6 +13,7 @@ const SearchAuthor = ({ setAuthor, location, match, history }) => {
     setAuthor(value);
     e.preventDefault();
   };
+
   return (
     <div className="search_wrap">
       <form action="#" method="post" onSubmit={onSubmit}>
@@ -32,7 +32,7 @@ const SearchAuthor = ({ setAuthor, location, match, history }) => {
             /> */}
             <Link
               to={{
-                pathname: `/reservation/author/${value}`,
+                pathname: `/reservation/searchUser/${value}`,
                 state: `${match.params.author}`
               }}
               className="submit"
