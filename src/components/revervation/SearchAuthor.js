@@ -12,6 +12,7 @@ const SearchAuthor = ({ setAuthor, match }) => {
   const onSubmit = e => {
     setAuthor(value);
     e.preventDefault();
+    setValue("");
   };
 
   return (
@@ -36,6 +37,7 @@ const SearchAuthor = ({ setAuthor, match }) => {
                 state: `${match.params.author}`
               }}
               className="submit"
+              onClick={() => setValue("")}
             >
               검색하기
             </Link>
