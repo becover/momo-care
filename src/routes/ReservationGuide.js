@@ -8,9 +8,7 @@ const ReservationGuide = ({
   currentPage,
   setCurrentPage,
   setAuthor,
-  location,
-  match,
-  history
+  match
 }) => {
   return (
     <>

@@ -12,11 +12,15 @@ const ReservationBorders = ({
 }) => {
   const borderNumber = [];
   if (articlesCount <= 10) {
-    for (let i = articlesCount, j = 0; j < 10; i--, j++) {
+    for (let i = articlesCount, j = 0; j < 10 && i > 0; i--, j++) {
       borderNumber.push(i);
     }
   } else if (articlesCount > 10) {
-    for (let i = articlesCount - 10 * currentPage, j = 0; j < 10; i--, j++) {
+    for (
+      let i = articlesCount - 10 * currentPage, j = 0;
+      j < 10 && i > 0;
+      i--, j++
+    ) {
       borderNumber.push(i);
     }
   }
@@ -55,7 +59,16 @@ const ReservationBorders = ({
               {articles.map(article => (
                 <tr key={article.slug}>
                   <td>{borderNumber.shift()}</td>
-                  <td>{article.title}</td>
+                  <td>
+                    <Link
+                      to={{
+                        pathname: `/reservation/view/${article.slug}`,
+                        state: article
+                      }}
+                    >
+                      {article.title}
+                    </Link>
+                  </td>
                   <td>{article.author.username}</td>
                   <td>예약대기</td>
                   <td>{article.createdAt.slice(0, 10)}</td>

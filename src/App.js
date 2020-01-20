@@ -8,7 +8,7 @@ import PriceGuide from "./routes/PriceGuide";
 import ContactPrice from "./routes/ContactPrice";
 import ReservationGuide from "./routes/ReservationGuide";
 import ReservationForm from "./routes/ReservationForm";
-import View from "./components/revervation/View";
+import ReservationView from "./routes/ReservationView";
 import ServiceCase from "./routes/ServiceCase";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -17,20 +17,28 @@ function App() {
   const [state, setState] = useState([]);
   const [searchState, setSearchState] = useState([]);
   const [articlesCount, setArticlesCount] = useState("");
+  const [searchCount, setSearchCount] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
     const onSearchAuthor = async (author, pageNumber) => {
+      const URI = "https://conduit.productionready.io/api";
       const {
         data: { articles, articlesCount }
       } = await axios.get(
-        `https://conduit.productionready.io/api/articles?limit=10&offset=${pageNumber *
-          10}${author ? `&author=${author}` : ""}`
+        `${URI}/articles?limit=10&offset=${pageNumber * 10}${
+          author ? `&author=${author}` : ""
+        }`
       );
-      if (!author) setState(articles);
-      if (author) setSearchState(articles);
-      setArticlesCount(articlesCount);
+      if (!author) {
+        setState(articles);
+        setArticlesCount(articlesCount);
+      }
+      if (author) {
+        setSearchState(articles);
+        setSearchCount(articlesCount);
+      }
       const [
         {
           author: { username }
@@ -69,11 +77,11 @@ function App() {
         <Route
           path="/reservation/searchUser/:author"
           exact
-          render={({ match, location, history }) => (
+          render={({ match }) => (
             <ReservationGuide
               state={searchState}
-              setState={location.state}
-              articlesCount={articlesCount}
+              setState={setState}
+              articlesCount={searchCount}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               setAuthor={setAuthor}
@@ -83,7 +91,11 @@ function App() {
             />
           )}
         />
-        <Route path="/reservation/view/:id" exact component={View} />
+        <Route
+          path="/reservation/view/:slug"
+          exact
+          component={ReservationView}
+        />
         <Route path="/reservation/form" exact component={ReservationForm} />
         <Route path="/case" exact component={ServiceCase} />
       </Switch>
