@@ -8,6 +8,8 @@ import main_cont1_bg from "../asset/img/main_cont1_bg.png";
 const Main = () => {
   const today = new Date();
   const currentTime = today.getHours();
+  const currentDay = today.getDay();
+  console.log(currentDay);
   const mainVisualListStyle1 = {
     backgroundImage: `url(${main_visual_1})`,
     backgroundRepeat: "no-repeat",
@@ -25,7 +27,7 @@ const Main = () => {
       <div className="main_visual">
         <div className="main_vs_list">
           <ul className="slides">
-            {currentTime >= 18 && currentTime < 9 ? (
+            {0 < currentDay < 6 && currentTime < 18 && currentTime >= 9 ? (
               <li style={mainVisualListStyle1}>
                 <div className="main_vs_txt">
                   <img
