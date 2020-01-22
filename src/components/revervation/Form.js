@@ -1,8 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
 import icon_home from "../../asset/img/icon_home.png";
 
 const Form = () => {
+  const [date, setDate] = useState(new Date());
+  const [inputValue, setInputValue] = useState("");
+  const [toggleValue, setToggleValue] = useState({
+    isClicked: false
+  });
+  console.log(inputValue);
+  const formatDate = date => {
+    const today = new Date();
+    const thisYear = today.getFullYear();
+    let thisMonth = today.getMonth() + 1;
+    thisMonth = thisMonth >= 10 ? thisMonth : `0${thisMonth}`;
+    let thisDay = today.getDate();
+    thisDay = thisDay >= 10 ? thisDay : `0${thisDay}`;
+
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = month >= 10 ? month : `0${month}`;
+    let day = date.getDate();
+    day = day >= 10 ? day : `0${day}`;
+
+    if (
+      parseInt(`${year}${month}${day}`, 10) -
+        parseInt(`${thisYear}${thisMonth}${thisDay}`, 10) <
+      0
+    ) {
+      alert("과거일은 예약날짜로 선택할 수 없습니다");
+      return "";
+    }
+    return `${year}-${month}-${day}`;
+  };
+  const onDateChange = date => {
+    setDate(formatDate(date));
+  };
+  const onValueChange = date => {
+    setInputValue(formatDate(date));
+    setToggleValue({
+      ...toggleValue,
+      isClicked: !toggleValue.isClicked
+    });
+  };
+  const onToggleValue = () =>
+    setToggleValue({
+      ...toggleValue,
+      isClicked: !toggleValue.isClicked
+    });
   return (
     <>
       <div className="sub_container">
@@ -31,14 +77,24 @@ const Form = () => {
                   <label htmlFor="estimate_2">고객명</label>
                   <input type="text" id="estimate_2" />
                 </li>
-                <li className="left  w_50 icon_calendar">
+                <li className="left  w_50 icon_calendar calendar_parents">
                   <label htmlFor="estimate_3">희망 서비스일</label>
                   <input
                     type="text"
                     id="estimate_3"
                     placeholder="날짜 선택"
                     className="calendar_date"
+                    value={inputValue}
+                    readOnly
+                    onClick={onToggleValue}
                   />
+                  {toggleValue.isClicked && (
+                    <Calendar
+                      value={date}
+                      onChange={(onDateChange, onValueChange)}
+                      className="calendar"
+                    />
+                  )}
                 </li>
                 <li className="right  w_50">
                   <label htmlFor="estimate_4">연락처</label>
