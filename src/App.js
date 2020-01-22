@@ -23,12 +23,13 @@ function App() {
 
   useEffect(() => {
     const onSearchAuthor = async (author, pageNumber) => {
-      const URI = "https://conduit.productionready.io/api";
+      const URI = "http://localhost:9090";
       const {
-        data: { articles, articlesCount }
+        content: articles,
+        totoalElements: articlesCount
       } = await axios.get(
-        `${URI}/articles?limit=10&offset=${pageNumber * 10}${
-          author ? `&author=${author}` : ""
+        `${URI}/reservations?sort=number&size=10&page=${pageNumber * 10}${
+          author ? `&name=${author}` : ""
         }`
       );
       if (!author) {
