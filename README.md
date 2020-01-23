@@ -50,4 +50,6 @@ Purpose: implement the basic functions of the bulletin board
     - 리덕스 or Context api
     - 리듀서
 
+☆특이사항: 리얼월드 서버(미디엄클론)를 이용해서 하다보니 안맞는 기능들이 많아서 따로 서버세팅 받은걸로 변경작업 예정
+
 (마지막 수정날짜 20200123)
