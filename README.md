@@ -34,7 +34,9 @@ Purpose: implement the basic functions of the bulletin board
       - 예약신청하기
         1. <del>예약날짜 선택</del> (완료)
            - calendar기능 : 과거일자 선택시 안내와 반려, 달력 이외의 영역 클릭시 달력 off기능, 예약날짜 선택창 readonly기능추가
-        2. 주소 입력 (\*추후 버전에 주소api 적용예정)
+        2. 예약신청시 데이터 서버로 보내기
+           - 게시판화면으로 전환시키며 게시판 데이터 갱신하기
+        3. 주소 입력 (\*추후 버전에 주소api 적용예정)
     - 서비스사례
       - 게시판
         1. 내용미리보기
