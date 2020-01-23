@@ -25,8 +25,7 @@ function App() {
     const onSearchAuthor = async (author, pageNumber) => {
       const URI = "http://localhost:9090";
       const {
-        content: articles,
-        totoalElements: articlesCount
+        data: { content: articles, totoalElements: articlesCount }
       } = await axios.get(
         `${URI}/reservations?sort=number&size=10&page=${pageNumber * 10}${
           author ? `&name=${author}` : ""
@@ -42,7 +41,7 @@ function App() {
       }
       const [
         {
-          author: { username }
+          name: { username }
         }
       ] = articles;
       if (author) setAuthor(username);

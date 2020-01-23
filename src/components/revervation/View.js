@@ -22,24 +22,25 @@ const View = ({ state }) => {
             <div className="title_area">{state.title}</div>
 
             <div className="bbs_view_cont">
-              <div className="date_area">{state.createdAt.slice(0, 10)}</div>
-              {state.body}
+              <div className="date_area">{state.createDate.slice(0, 10)}</div>
+              {state.content}
             </div>
-
-            <div className="repple_area">
-              <h2>댓글목록</h2>
-              <div className="repple">
-                <div className="top_area clfx">
-                  <div className="date">2017-05-18</div>
-                  <span className="name">HS케어</span>
-                </div>
-                <p>
-                  댓글입니다! 감사합니다. 댓글입니다! 감사합니다.
-                  <br />
-                  댓글입니다! 감사합니다.
-                </p>
+            {state.comments.length !== 0 && (
+              <div className="repple_area">
+                <h2>댓글목록</h2>
+                {state.comments.map(comment => (
+                  <div className="repple" key={comment.id}>
+                    <div className="top_area clfx">
+                      <div className="date">
+                        {comment.createDate.slice(0, 10)}
+                      </div>
+                      <span className="name">{comment.writer}</span>
+                    </div>
+                    <p>{comment.content}</p>
+                  </div>
+                ))}
               </div>
-            </div>
+            )}
           </div>
 
           <div className="btm_btn_area">

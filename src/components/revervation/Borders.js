@@ -57,21 +57,21 @@ const ReservationBorders = ({
             </thead>
             <tbody>
               {articles.map(article => (
-                <tr key={article.slug}>
+                <tr key={article.number}>
                   <td>{borderNumber.shift()}</td>
                   <td>
                     <Link
                       to={{
-                        pathname: `/reservation/view/${article.slug}`,
+                        pathname: `/reservation/view/${article.number}`,
                         state: article
                       }}
                     >
                       {article.title}
                     </Link>
                   </td>
-                  <td>{article.author.username}</td>
+                  <td>{article.name}</td>
                   <td>예약대기</td>
-                  <td>{article.createdAt.slice(0, 10)}</td>
+                  <td>{article.createDate.slice(0, 10)}</td>
                 </tr>
               ))}
             </tbody>
