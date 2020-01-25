@@ -4,6 +4,8 @@ import main_visual_1 from "../asset/img/main_visual_1.jpg";
 import main_visual_2 from "../asset/img/main_visual_2.jpg";
 import main_visual_txt from "../asset/img/main_vs_txt.png";
 import main_cont1_bg from "../asset/img/main_cont1_bg.png";
+import main_cont3_img from "../asset/img/main_img_5.jpg";
+import Carousel from "../components/Carousel";
 
 const Main = () => {
   const today = new Date();
@@ -164,52 +166,83 @@ const Main = () => {
           <div className="main_cont_3">
             <h1 className="title_style_1">서비스사례</h1>
 
-            <div className="main_service_rolling">
-              <ul className="slides clfx bxslider">
-                <li>
-                  <div className="img_area">
-                    <Link to="#">
-                      <img src="../img/main_img_5.jpg" alt="" />
-                    </Link>
+            <Carousel
+              className="main_service_rolling"
+              carouselItems={[
+                <div className="slides">
+                  <div className="list">
+                    <div className="img_area">
+                      <Link to="#">
+                        <img src={main_cont3_img} alt="" />
+                      </Link>
+                    </div>
+                    <div className="txt_area">
+                      <Link to="#">
+                        <span className="title">
+                          여름맞이 준비 필수는 에어컨청소1
+                        </span>
+                        에어컨은 원래 그 형태자체가 곰팡이가 생기기 쉬운
+                        기기래요.
+                        <br />
+                        차가운 바람을 만들어내며 습기가 기기 안으로 차기
+                        때문인데요,
+                        <br />
+                        이렇게 청소를 해주고 난 다음에, 에어컨을 사용하고 난
+                        뒤에 끄기 전에...
+                      </Link>
+                    </div>
                   </div>
-                  <div className="txt_area">
-                    <Link to="#">
-                      <span className="title">
-                        여름맞이 준비 필수는 에어컨청소1
-                      </span>
-                      에어컨은 원래 그 형태자체가 곰팡이가 생기기 쉬운 기기래요.
-                      <br />
-                      차가운 바람을 만들어내며 습기가 기기 안으로 차기
-                      때문인데요,
-                      <br />
-                      이렇게 청소를 해주고 난 다음에, 에어컨을 사용하고 난 뒤에
-                      끄기 전에...
-                    </Link>
+                </div>,
+                <div className="slides">
+                  <div className="list">
+                    <div className="img_area">
+                      <Link to="#">
+                        <img src={main_cont3_img} alt="" />
+                      </Link>
+                    </div>
+                    <div className="txt_area">
+                      <Link to="#">
+                        <span className="title">
+                          여름맞이 준비 필수는 에어컨청소3
+                        </span>
+                        에어컨은 원래 그 형태자체가 곰팡이가 생기기 쉬운
+                        기기래요.
+                        <br />
+                        차가운 바람을 만들어내며 습기가 기기 안으로 차기
+                        때문인데요,
+                        <br />
+                        이렇게 청소를 해주고 난 다음에, 에어컨을 사용하고 난
+                        뒤에 끄기 전에...
+                      </Link>
+                    </div>
                   </div>
-                </li>
-                <li>
-                  <div className="img_area">
-                    <Link to="#">
-                      <img src="../img/main_img_5.jpg" alt="" />
-                    </Link>
+                </div>,
+                <div className="slides">
+                  <div className="list">
+                    <div className="img_area">
+                      <Link to="#">
+                        <img src={main_cont3_img} alt="" />
+                      </Link>
+                    </div>
+                    <div className="txt_area">
+                      <Link to="#">
+                        <span className="title">
+                          여름맞이 준비 필수는 에어컨청소2
+                        </span>
+                        에어컨은 원래 그 형태자체가 곰팡이가 생기기 쉬운
+                        기기래요.
+                        <br />
+                        차가운 바람을 만들어내며 습기가 기기 안으로 차기
+                        때문인데요,
+                        <br />
+                        이렇게 청소를 해주고 난 다음에, 에어컨을 사용하고 난
+                        뒤에 끄기 전에...
+                      </Link>
+                    </div>
                   </div>
-                  <div className="txt_area">
-                    <Link to="#">
-                      <span className="title">
-                        여름맞이 준비 필수는 에어컨청소2
-                      </span>
-                      에어컨은 원래 그 형태자체가 곰팡이가 생기기 쉬운 기기래요.
-                      <br />
-                      차가운 바람을 만들어내며 습기가 기기 안으로 차기
-                      때문인데요,
-                      <br />
-                      이렇게 청소를 해주고 난 다음에, 에어컨을 사용하고 난 뒤에
-                      끄기 전에...
-                    </Link>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                </div>
+              ]}
+            />
 
             <div className="btn_more">
               <Link to="#">자세히 보기</Link>
