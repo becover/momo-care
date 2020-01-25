@@ -6,7 +6,9 @@ const Carousel = props => {
   let scrollInterval = null;
   const style = {
     carousel: {
-      position: "relative"
+      position: "relative",
+      width: "100%",
+      height: "148px"
     },
     carouselItem: {
       position: "absolute",
@@ -21,7 +23,7 @@ const Carousel = props => {
     scrollInterval = setTimeout(() => {
       const { carouselItems } = props;
       setActive((active + 1) % carouselItems.length);
-    }, 50000);
+    }, 3500);
     return () => clearTimeout(scrollInterval);
   });
   const { carouselItems, ...rest } = props;
