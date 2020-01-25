@@ -199,9 +199,11 @@ transition: all 0.35s ease-in-out;
 
 .main_cont_3_bg{background:url(asset/img/main_sea.jpg) no-repeat 0 0; background-size:100%; }
 .main_cont_3{position:relative; padding:270px 0 130px; margin:0 auto; max-width:840px; }
-.main_service_rolling .slides li{position:relative; padding-left:420px; display:none; box-sizing:border-box;}
-.main_service_rolling .slides li:first-child{display:block;}
-.main_service_rolling .img_area{position:absolute; left:135px; top:0; text-align:center; 
+.main_service_rolling {width:100%}
+.main_service_rolling .img_area, .main_service_rolling .txt_area {width:50%; float:left;}
+.main_service_rolling .slides .list{position:relative; padding-left:420px; box-sizing:border-box;}
+
+.main_service_rolling .img_area {text-align:center; 
 -webkit-transition: all 0.35s ease-in-out;
 -moz-transition: all 0.35s ease-in-out;
 -ms-transition: all 0.35s ease-in-out;
