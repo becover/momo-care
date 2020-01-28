@@ -4,6 +4,7 @@ import main_visual_1 from "../asset/img/main_visual_1.jpg";
 import main_visual_2 from "../asset/img/main_visual_2.jpg";
 import main_visual_txt from "../asset/img/main_vs_txt.png";
 import main_cont1_bg from "../asset/img/main_cont1_bg.png";
+import SlickSlider from "../components/SlickSlider";
 
 const Main = () => {
   const today = new Date();
@@ -163,8 +164,9 @@ const Main = () => {
         <div className="main_cont_3_bg">
           <div className="main_cont_3">
             <h1 className="title_style_1">서비스사례</h1>
+            <SlickSlider />
 
-            <div className="main_service_rolling">
+            {/* <div className="main_service_rolling">
               <ul className="slides clfx bxslider">
                 <li>
                   <div className="img_area">
@@ -209,7 +211,7 @@ const Main = () => {
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className="btn_more">
               <Link to="#">자세히 보기</Link>
