@@ -1,33 +1,52 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-expressions */
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import main_cont3_img from "../asset/img/main_img_5.jpg";
 
 const Slider = () => {
-  const [slideObj] = useState([
+  const [slideObj, setSlideObj] = useState([
+    {
+      id: -1,
+      title: "Test중입니다333",
+      content:
+        "슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 두줄이상이 되면 내용이 생략됩니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다.",
+      img: { main_cont3_img },
+      left: 0
+    },
     {
       id: 1,
       title: "Test중입니다111",
       content:
         "슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 두줄이상이 되면 내용이 생략됩니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다.",
-      img: { main_cont3_img }
+      img: { main_cont3_img },
+      left: 0
     },
     {
       id: 2,
       title: "Test중입니다222",
       content:
         "슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 두줄이상이 되면 내용이 생략됩니다.",
-      img: { main_cont3_img }
+      img: { main_cont3_img },
+      left: 840
     },
     {
       id: 3,
       title: "Test중입니다333",
       content:
         "슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 두줄이상이 되면 내용이 생략됩니다.",
-      img: { main_cont3_img }
+      img: { main_cont3_img },
+      left: 1680
+    },
+    {
+      id: 4,
+      title: "Test중입니다111",
+      content:
+        "슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 두줄이상이 되면 내용이 생략됩니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다. 모모케어 리뷰게시판 미리보기 슬라이더 테스트중입니다.",
+      img: { main_cont3_img },
+      left: 0
     }
   ]);
-  console.log(slideObj);
   const [sildeOption] = useState({
     dots: true,
     dotsNumber: slideObj.map(s => ({ ...s })),
@@ -37,37 +56,62 @@ const Slider = () => {
     show: 1,
     speed: 1000
   });
+  const [counter, setCounter] = useState(1);
 
+  const onClickPrev = () => {
+    setCounter(prevCounter => prevCounter - 1);
+  };
+
+  const onClickNext = () => {
+    setCounter(prevCounter => prevCounter + 1);
+  };
+  console.log(counter);
+  useEffect(() => {
+    if (counter <= 0) {
+      setCounter(slideObj.length - 2);
+    }
+    if (counter >= slideObj.length - 1) setCounter(slideObj.length - counter);
+  }, [counter, slideObj]);
+  //#region
   const Slider = styled.div`
     position: relative;
+    overflow: hidden;
     .slidesList {
-      ul {
-        width: 100%;
-        overflow: hidden;
-      }
+      width: 840px;
+      height: 148px;
+      transition: all 0.2s ease-in-out;
+      ${counter =>
+        !isNaN(counter.children.props.counter) &&
+        css`
+          & {
+            transform: translateX(
+              -${parseInt(counter.children.props.counter) * 840}px
+            );
+          }
+        `}
       li {
-        position: relative;
-        padding-left: 420px;
-        display: none;
+        width: 840px;
+        z-index: 1;
+        position: absolute;
+        top: 0;
         box-sizing: border-box;
       }
-      li:first-child {
-        display: block;
-      }
-      .imgArea {
-        position: absolute;
-        left: 135px;
-        top: 0;
+      li .imgArea {
+        width: 50%;
+        float: left;
+        padding-left: 135px;
         text-align: center;
         transition: all 0.35s ease-in-out;
+        box-sizing: border-box;
         img {
           width: 250px;
           height: 148px;
         }
       }
 
-      .textArea {
-        width: 100%;
+      li .textArea {
+        width: 50%;
+        float: left;
         padding-top: 10px;
         min-height: 148px;
         box-sizing: border-box;
@@ -93,11 +137,11 @@ const Slider = () => {
   `;
   const Buttons = styled.div`
     button {
+      z-index: 100;
       border: 0 none;
       background: none;
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
       cursor: pointer;
       svg {
         width: 50px;
@@ -130,47 +174,52 @@ const Slider = () => {
       }
     }
   `;
+  //#endregion
   return (
-    <Slider>
-      <Buttons>
-        <button className="slideArrow slide-prev">
-          <svg>
-            <path
-              d="M 49 0 L 8 49 L 49 98"
-              fill="none"
-              stroke="#c2c2c2"
-              stroke-width="3"
-            />
-          </svg>
-        </button>
-        <button className="slideArrow slide-next">
-          <svg>
-            <path
-              d="M 0 0 L 42 50 L 0 97"
-              fill="none"
-              stroke="#c2c2c2"
-              stroke-width="3"
-            />
-          </svg>
-        </button>
-      </Buttons>
-      <ul className="slidesList">
-        {slideObj.map(slide => (
-          <li key={slide.id}>
-            <div className="imgArea">
-              <Link to="#">
-                <img src={slide.img.main_cont3_img} alt="" />
-              </Link>
-            </div>
-            <div className="textArea">
-              <Link to="#">
-                <h3>{slide.title}</h3>
-                <span>{slide.content}</span>
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <>
+      {sildeOption.arrow && (
+        <Buttons>
+          <button className="slideArrow slide-prev" onClick={onClickPrev}>
+            <svg>
+              <path
+                d="M 49 0 L 8 49 L 49 98"
+                fill="none"
+                stroke="#c2c2c2"
+                strokeWidth="3"
+              />
+            </svg>
+          </button>
+          <button className="slideArrow slide-next" onClick={onClickNext}>
+            <svg>
+              <path
+                d="M 0 0 L 42 50 L 0 97"
+                fill="none"
+                stroke="#c2c2c2"
+                strokeWidth="3"
+              />
+            </svg>
+          </button>
+        </Buttons>
+      )}
+      <Slider>
+        <ul className="slidesList" counter={counter}>
+          {slideObj.map((slide, idx) => (
+            <li key={slide.id} style={{ left: idx * 840 }}>
+              <div className="imgArea">
+                <Link to="#">
+                  <img src={slide.img.main_cont3_img} alt="" />
+                </Link>
+              </div>
+              <div className="textArea">
+                <Link to="#">
+                  <h3>{slide.title}</h3>
+                  <span>{slide.content}</span>
+                </Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Slider>
       {sildeOption.dots && (
         <Dots>
           <div>
@@ -180,7 +229,7 @@ const Slider = () => {
           </div>
         </Dots>
       )}
-    </Slider>
+    </>
   );
 };
 
